@@ -1,6 +1,6 @@
 using Dalamud.Game.ClientState;
 
-namespace PushyFinder.Util;
+namespace Ntfy.Util;
 
 public static class CharacterUtil
 {

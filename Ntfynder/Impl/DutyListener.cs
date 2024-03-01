@@ -1,9 +1,9 @@
 using Dalamud.Utility;
 using Lumina.Excel.GeneratedSheets;
-using PushyFinder.Delivery;
-using PushyFinder.Util;
+using Ntfy.Delivery;
+using Ntfy.Util;
 
-namespace PushyFinder.Impl;
+namespace Ntfy.Impl;
 
 public class DutyListener
 {
@@ -28,6 +28,6 @@ public class DutyListener
             return;
         
         var dutyName = e.RowId == 0 ? "Duty Roulette" : e.Name.ToDalamudString().TextValue;
-        PushoverDelivery.Deliver($"Duty pop", $"Duty registered: '{dutyName}'.");
+        NtfyDelivery.Deliver($"Duty pop", $"Duty registered: '{dutyName}'.");
     }
 }

@@ -1,18 +1,18 @@
-﻿using System;
+using System;
 using System.Numerics;
 using Dalamud.Interface.Windowing;
 using ImGuiNET;
-using PushyFinder.Delivery;
-using PushyFinder.Util;
+using Ntfy.Delivery;
+using Ntfy.Util;
 
-namespace PushyFinder.Windows;
+namespace Ntfy.Windows;
 
 public class ConfigWindow : Window, IDisposable
 {
     private Configuration Configuration;
     
     public ConfigWindow(Plugin plugin) : base(
-        "PushyFinder Configuration",
+        "Ntfy Configuration",
         ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoScrollbar |
         ImGuiWindowFlags.NoScrollWithMouse | ImGuiWindowFlags.AlwaysAutoResize)
     {
@@ -26,24 +26,10 @@ public class ConfigWindow : Window, IDisposable
     public override void Draw()
     {
         {
-            var cfg = Configuration.PushoverAppKey;
-            if (ImGui.InputText("Application key", ref cfg, 2048u))
+            var cfg = Configuration.NtfyTopic;
+            if (ImGui.InputText("Ntfy Topic", ref cfg, 2048u))
             {
-                Configuration.PushoverAppKey = cfg;
-            }
-        }
-        {
-            var cfg = Configuration.PushoverUserKey;
-            if (ImGui.InputText("User key", ref cfg, 2048u))
-            {
-                Configuration.PushoverUserKey = cfg;
-            }
-        }
-        {
-            var cfg = Configuration.PushoverDevice;
-            if (ImGui.InputText("Device name", ref cfg, 2048u))
-            {
-                Configuration.PushoverDevice = cfg;
+                Configuration.NtfyTopic = cfg;
             }
         }
         {
@@ -57,8 +43,8 @@ public class ConfigWindow : Window, IDisposable
         if (ImGui.Button("Send test notification"))
         {
             notifSentMessageTimer.Start();
-            PushoverDelivery.Deliver("Test notification", 
-                                     "If you received this, PushyFinder is configured correctly.");
+            NtfyDelivery.Deliver("Test notification", 
+                                     "If you received this, Ntfy is configured correctly.");
         }
 
         if (notifSentMessageTimer.Value)

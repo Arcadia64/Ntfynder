@@ -1,21 +1,20 @@
-﻿using Dalamud.Configuration;
+using Dalamud.Configuration;
 using Dalamud.Plugin;
 using System;
 
-namespace PushyFinder
+namespace Ntfy
 {
     [Serializable]
     public class Configuration : IPluginConfiguration
     {
         public int Version { get; set; } = 1;
 
-        public string PushoverAppKey { get; set; } = "";
-        public string PushoverUserKey { get; set; } = "";
-        public string PushoverDevice { get; set; } = "";
         public bool EnableForDutyPops { get; set; } = true;
         public bool IgnoreAfkStatus { get; set; } = false;
 
-        // the below exist just to make saving less cumbersome
+        // Optional: Specify the ntfy topic if needed
+        public string NtfyTopic { get; set; } = "";
+
         [NonSerialized]
         private DalamudPluginInterface? PluginInterface;
 

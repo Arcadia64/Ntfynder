@@ -1,19 +1,19 @@
-﻿using Dalamud.Game.Command;
+using Dalamud.Game.Command;
 using Dalamud.IoC;
 using Dalamud.Plugin;
 using Dalamud.Interface.Windowing;
 using Dalamud.Logging;
 using Dalamud.Plugin.Services;
-using PushyFinder.Impl;
-using PushyFinder.Util;
-using PushyFinder.Windows;
+using Ntfy.Impl;
+using Ntfy.Util;
+using Ntfy.Windows;
 
-namespace PushyFinder
+namespace Ntfy
 {
     public sealed class Plugin : IDalamudPlugin
     {
-        public string Name => "PushyFinder";
-        private const string CommandName = "/pushyfinder";
+        public string Name => "NtfyFinder";
+        private const string CommandName = "/ntfy";
 
         private DalamudPluginInterface PluginInterface { get; init; }
         private ICommandManager CommandManager { get; init; }
@@ -23,7 +23,7 @@ namespace PushyFinder
         public static Configuration Configuration { get; private set; }
 #pragma warning restore
         
-        public WindowSystem WindowSystem = new("PushyFinder");
+        public WindowSystem WindowSystem = new("Ntfy");
 
         private ConfigWindow ConfigWindow { get; init; }
 
