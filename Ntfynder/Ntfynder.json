@@ -8,7 +8,7 @@
     "EffectiveVersion": "1.1.2.0",
     "Author": "Arcadia",
     "Name": "Ntfynder",
-    "Punchline": "Mobile push notifications for the Party Finder.",
+    "Punchline": "Mobile push notifications for the Party Finder. Alternative to PushyFinder without need for paid app or any hastle",
     "Description": "A plugin that uses Ntfy (https://ntfy.sh/) to send mobile push notifications when party members join or leave, or when a duty finder queue is initiated. Forked from PushyFinder.",
     "Changelog": null,
     "Tags": [
@@ -22,7 +22,7 @@
     "AssemblyVersion": "1.1.2.0",
     "TestingAssemblyVersion": null,
     "IsTestingExclusive": false,
-    "RepoUrl": null,
+    "RepoUrl": "https://github.com/Arcadia64/Ntfynder",
     "ApplicableVersion": "any",
     "DalamudApiLevel": 9,
     "DownloadCount": 0,
