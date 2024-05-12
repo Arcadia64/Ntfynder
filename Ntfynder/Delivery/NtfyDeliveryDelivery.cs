@@ -28,7 +28,6 @@ public static class NtfyDelivery
                 .WithHeaders(new
                 {
                     Priority = Plugin.Configuration.NtfyPriority,
-                    Host = "ntfy.sh"
                 })
                 .PostStringAsync(message);
         }
