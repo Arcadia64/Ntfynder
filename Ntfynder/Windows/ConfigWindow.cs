@@ -26,10 +26,43 @@ public class ConfigWindow : Window, IDisposable
     public override void Draw()
     {
         {
+            var cfg = Configuration.NtfyServer;
+            if (ImGui.InputText("Ntfy Server", ref cfg, 2048u))
+            {
+                Configuration.NtfyServer = cfg;
+            }
+        }
+        {
             var cfg = Configuration.NtfyTopic;
             if (ImGui.InputText("Ntfy Topic", ref cfg, 2048u))
             {
                 Configuration.NtfyTopic = cfg;
+            }
+        }
+        {
+            var cfg = Configuration.NtfyPriority;
+            string[] ntfyPriorityOptions = [
+                "5 (Max)",
+                "4 (High)",
+                "3 (Default)",
+                "2 (Low)",
+                "1 (Min)",
+            ];
+            var listBoxHeight = ImGui.GetTextLineHeightWithSpacing() * ntfyPriorityOptions.Length;
+            if (ImGui.BeginListBox("Ntfy Notification Priority", new Vector2(0, listBoxHeight)))
+            {
+                for (var i = 0; i < ntfyPriorityOptions.Length; i++)
+                {
+                    // Calculating the selected priority from ntfyPriorityOptions index. It's not
+                    // very elegant but ntfy's priority options seem stable enough that it should
+                    // not cause problems in the future.
+                    var currentPriority = ntfyPriorityOptions.Length - i;
+                    if (ImGui.Selectable(ntfyPriorityOptions[i], cfg == currentPriority))
+                    {
+                        Configuration.NtfyPriority = currentPriority;
+                    }
+                }
+                ImGui.EndListBox();
             }
         }
         {

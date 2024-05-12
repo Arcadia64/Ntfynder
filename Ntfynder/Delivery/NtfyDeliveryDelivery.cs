@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Dalamud.Logging;
+using Flurl;
 using Flurl.Http;
 
 namespace Ntfy.Delivery;
@@ -14,7 +15,7 @@ public static class NtfyDelivery
     private static async Task DeliverAsync(string title, string text)
     {
         // Construct the URL dynamically using the NtfyTopic from the settings
-        var ntfyUrl = $"https://ntfy.sh/{Plugin.Configuration.NtfyTopic}";
+        var ntfyUrl = Plugin.Configuration.NtfyServer.AppendPathSegment(Plugin.Configuration.NtfyTopic);
 
         // Assuming `title` is used as the main message
         // Since ntfy doesn't have a separate title field, you can prepend it to the message or just send the message
@@ -26,7 +27,7 @@ public static class NtfyDelivery
             await ntfyUrl
                 .WithHeaders(new
                 {
-                    Priority = "5",
+                    Priority = Plugin.Configuration.NtfyPriority,
                     Host = "ntfy.sh"
                 })
                 .PostStringAsync(message);

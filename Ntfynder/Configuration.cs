@@ -12,8 +12,12 @@ namespace Ntfy
         public bool EnableForDutyPops { get; set; } = true;
         public bool IgnoreAfkStatus { get; set; } = false;
 
+        // Optional: Specify a ntfy server location
+        public string NtfyServer { get; set; } = "https://ntfy.sh";
         // Optional: Specify the ntfy topic if needed
         public string NtfyTopic { get; set; } = "";
+        // Optional: Specify ntfy notification priority. Defaults to 5 (Max).
+        public int NtfyPriority { get; set; } = 5;
 
         [NonSerialized]
         private DalamudPluginInterface? PluginInterface;
